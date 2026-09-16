@@ -7,6 +7,12 @@ Create the `docs/adr/` directory lazily: only when the first ADR is needed.
 ## Template
 
 ```md
+---
+proposed_date: YYYY-MM-DD
+supersedes: []   # e.g. ["0042"], if this ADR supersedes one or more earlier ones
+tags: []         # e.g. [database, security]
+---
+
 # {Short title of the decision}
 
 ## Context
@@ -32,11 +38,21 @@ Context and Decision follow SCQA (Situation, Complication, Question, Answer): th
 
 That's the order the finished document reads in, but it's not the order to *write* it in. Work out Context and Alternatives Considered first, in that order, before drafting Decision. Don't write Decision first and backfill the other two to justify it: think through the situation and the real options honestly, then let the decision fall out of that, and only then slot it into its place above Alternatives Considered in the final file. If the trade-off doesn't survive being written out honestly, that's a sign the decision needs rethinking, not that the section is optional. Consequences comes last, once the decision is settled, since it's a description of what follows from it.
 
-## Optional sections
+The frontmatter starts with `proposed_date` set to today. Leave `supersedes` and `tags` as empty arrays unless there's a real earlier ADR being reversed or an obvious tag to add; don't invent tags for the sake of filling the field.
 
-Only include this when it adds genuine value. Most ADRs won't need it.
+## Superseding an ADR
 
-- **Status** frontmatter (`proposed | accepted | deprecated | superseded by ADR-NNNN`): useful when decisions are revisited
+If the new ADR's `supersedes` list isn't empty, go back and edit each ADR it names: add a `superseded_by` field to that file's frontmatter, pointing at the new ADR's number.
+
+```md
+superseded_by: ["0051"]   # set once a later ADR supersedes this one
+```
+
+Don't include `superseded_by` in a fresh ADR's own frontmatter: an ADR can't know at birth that it will one day be superseded, so the field only ever gets added later, by whichever ADR does the superseding.
+
+## Status
+
+There's no `status` field: status is derived from where the ADR lives, not stored. While it only exists on an open PR, it's implicitly proposed. Once that PR merges to `main`, it's accepted. Once another ADR names it in `supersedes` (and it picks up `superseded_by`), it's superseded. This only works if ADRs go through PR review. If one ever lands by a direct commit to `main`, it skips the proposed state entirely and is accepted from the moment it exists.
 
 ## Numbering
 
