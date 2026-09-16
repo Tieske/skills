@@ -25,6 +25,15 @@ Ask: "What's the public interface, and which seams should we test?"
 
 When the shape of that interface is itself in question (how deep the module is, where the seam belongs, what the interface should expose), call the Skill tool with "codebase-design" for the vocabulary. It is the shared source of the module, interface, depth, seam, adapter, leverage and locality terms, and it is a reference to consult, not a session to run.
 
+## MECE test cases
+
+Within an agreed seam, test cases should be MECE: mutually exclusive, collectively exhaustive. This governs the seam's own cases, not the universe — "collectively exhaustive" means every case the seam's contract implies, not every case imaginable; scope stays set by the seam agreed above.
+
+- **Mutually exclusive**: each test exercises a distinct case, for a distinct reason. If a new test would only restate an existing one under a different name, it's not a new case — cut the weaker of the two.
+- **Collectively exhaustive**: enumerate the cases the seam's contract actually implies — each input case, each error path, each boundary — and confirm each one has a test. A gap here is a missing test, not a missing assertion inside an existing one.
+
+When full coverage is genuinely impractical (the case count explodes combinatorially, or a case can't be exercised in isolation), don't skip it silently: check with the user, and if they agree to leave it untested, document the gap — a comment, a TODO, a tracked issue — rather than leaving it invisible.
+
 ## Anti-patterns
 
 - **Implementation-coupled**: mocks internal collaborators, tests private methods, or verifies through a side channel (querying the database instead of using the interface). The tell: the test breaks when you refactor but behavior hasn't changed.
