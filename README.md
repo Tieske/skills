@@ -1,3 +1,20 @@
+> [!NOTE]
+> **This is my fork.** `main` tracks the original [mattpocock/skills](https://github.com/mattpocock/skills) unchanged. `tieske` is the default branch and holds my own modifications, rebased on top of `main`.
+>
+> After upstream changes, pull `main` from the original repo, then rebase `tieske` on it:
+>
+> ```bash
+> git checkout main
+> git pull upstream main
+> git push origin main
+>
+> git checkout tieske
+> git rebase main
+> git push origin tieske --force-with-lease
+> ```
+>
+> (Requires the `upstream` remote once: `git remote add upstream https://github.com/mattpocock/skills.git`)
+
 <p>
   <a href="https://www.aihero.dev/s/skills-newsletter">
     <picture>
