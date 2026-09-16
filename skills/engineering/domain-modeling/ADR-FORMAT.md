@@ -9,18 +9,30 @@ Create the `docs/adr/` directory lazily: only when the first ADR is needed.
 ```md
 # {Short title of the decision}
 
-{1-3 sentences: what's the context, what did we decide, and why.}
+## Context
+
+{What's the situation? What forces or constraints are driving this?}
+
+## Decision
+
+{What we decided, and why it wins given the context and the alternatives below.}
+
+## Alternatives Considered
+
+{What options were on the table, including the ones we rejected, and why each one was rejected or found wanting.}
+
+## Consequences
+
+{What becomes easier or harder as a result of this decision? Include downsides accepted, not just benefits. This is what future readers most need to know.}
 ```
 
-That's it. An ADR can be a single paragraph. The value is in recording *that* a decision was made and *why*, not in filling out sections.
+That's the order the finished document reads in, but it's not the order to *write* it in. Work out Context and Alternatives Considered first, in that order, before drafting Decision. Don't write Decision first and backfill the other two to justify it: think through the situation and the real options honestly, then let the decision fall out of that, and only then slot it into its place above Alternatives Considered in the final file. If the trade-off doesn't survive being written out honestly, that's a sign the decision needs rethinking, not that the section is optional. Consequences comes last, once the decision is settled, since it's a description of what follows from it.
 
 ## Optional sections
 
-Only include these when they add genuine value. Most ADRs won't need them.
+Only include this when it adds genuine value. Most ADRs won't need it.
 
 - **Status** frontmatter (`proposed | accepted | deprecated | superseded by ADR-NNNN`): useful when decisions are revisited
-- **Considered Options**: only when the rejected alternatives are worth remembering
-- **Consequences**: only when non-obvious downstream effects need to be called out
 
 ## Numbering
 
