@@ -11,11 +11,13 @@ Create the `docs/adr/` directory lazily: only when the first ADR is needed.
 
 ## Context
 
-{What's the situation? What forces or constraints are driving this?}
+{Situation: the stable state of things before this came up.}
+
+{Complication: what changed or what tension makes the status quo no longer tenable, implying the question this ADR has to answer.}
 
 ## Decision
 
-{What we decided, and why it wins given the context and the alternatives below.}
+{Answer: what we decided, and why it wins given the context and the alternatives below.}
 
 ## Alternatives Considered
 
@@ -25,6 +27,8 @@ Create the `docs/adr/` directory lazily: only when the first ADR is needed.
 
 {What becomes easier or harder as a result of this decision? Include downsides accepted, not just benefits. This is what future readers most need to know.}
 ```
+
+Context and Decision follow SCQA (Situation, Complication, Question, Answer): the two Context paragraphs are the Situation and the Complication, the Question is the thing that Complication implies but stays unwritten, and Decision is the Answer to it. A Context that doesn't leave an obvious question hanging isn't done yet.
 
 That's the order the finished document reads in, but it's not the order to *write* it in. Work out Context and Alternatives Considered first, in that order, before drafting Decision. Don't write Decision first and backfill the other two to justify it: think through the situation and the real options honestly, then let the decision fall out of that, and only then slot it into its place above Alternatives Considered in the final file. If the trade-off doesn't survive being written out honestly, that's a sign the decision needs rethinking, not that the section is optional. Consequences comes last, once the decision is settled, since it's a description of what follows from it.
 
